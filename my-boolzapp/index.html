@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>vue-boolzapp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app" class="container" v-cloak>
+        <!-- <h1>{{ message }}</h1> -->
+        <!-- sidebar -->
+        <div class="sidebar">
+            <!--  header -->
+            <header>
+                <div class="row">
+                    <div class="avatar d-flex">
+                        <img class="img-avatar-sidebar" src="img/zoro.jpg" alt="avatar1">
+                        <div class="dati-avatar-sidebar">
+                            <h4 id="name-avatar" class="inline-block">zoro</h4>
+                            <span class="block">Ultimo accesso oggi alle 23.45</span>
+                        </div>
+                    </div>
+      
+                    <ul class="sidebar-icon">
+                        <li><i class="fa-solid fa-circle-notch"></i></li>
+                        <li><i class="fa-solid fa-message"></i></li>
+                        <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                    </ul>
+                </div>
+            </header>
+                
+            <!-- notifiche -->
+            <div class="notifiche">
+                <div class="d-flex">
+                    <div class="notifiche-icon">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="dati-avatar">
+                        <span class="inline-block">Ricevi notifiche di nuovi messaggi</span>
+                        <span class="block"><a href="">attiva notifiche desktop</a></span>
+                    </div>
+                </div>
+            </div>
+            <!-- search -->
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i><input type="text" id="message" placeholder="Cerca o inizia una nuova chat">
+            </div>
+
+            <!-- chat -->
+            <ul class="chats">
+                <li>
+                    <!-- creo chat dinamica con v-for -->
+                    <div class="avatar d-flex align-center" v-for="(element, index) in contacts" :class="{active: currentIndex === index}" @click="setAvatar(index)">
+                        <img class="img-avatar" :src="element.avatar" alt="">
+                        <div class="dati-avatar">
+                            <h4 id="name-avatar" class="inline-block">{{ element.name }}</h4>
+                     
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+      
+        </div>
+        <!--  content -->
+        <div class="content">
+            <!--  header -->
+            <header>
+                <div class="row">
+                    <div class="avatar d-flex align-center" v-for="(element, index) in contacts" 
+                    v-show="currentIndex === index" >
+                        <img class="img-avatar" :src="element.avatar" alt="">
+                        <h4 id="name-avatar" class="inline-block">{{ element.name }}</h4>
+                    </div>
+      
+                    <ul class="content-icon">
+                        <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                        <li><i class="fa-solid fa-paperclip"></i></li>
+                        <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                    </ul>
+                </div>
+            </header>
+            <!--  conversation -->
+  
+            <ul class="conversation" v-for="(contact, index) in contacts" v-show="currentIndex === index">
+                <li class="my-message" v-for="message in contacts[currentIndex].messages" :key="message.date" v-show="message.status === 'sent'">
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <p>{{ message.message }}</p>
+                    <p class="hour">{{ message.date }}</p>
+                </li>
+                <li id="your-message" v-for="message in contacts[currentIndex].messages" :key="message.date" v-show="message.status === 'received'">
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <p>{{ message.message }}</p>
+                    <p class="hour">{{ message.date }}</p>
+                </li>
+            </ul> 
+            <!--footer  -->
+            <footer class="message">
+                <i class="fa-regular fa-face-smile"></i>
+                <input type="text" id="message" placeholder="Scrivi un messaggio">
+                <i class="fa-solid fa-microphone"></i>
+            </footer>   
+        </div>
+        
+    </div>
+</div>
+<!-- vue js -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<!-- main js -->
+<script type="text/javascript" src="/my-boolzapp/main.js" ></script>
+</body>
+</html>
+            
+                

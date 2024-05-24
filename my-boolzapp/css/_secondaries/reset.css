@@ -1,0 +1,45 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Roboto", sans-serif;
+}
+ul li {
+    list-style-type: none;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.inline-block {
+    display: inline-block;
+}
+.block {
+    display: block;
+}
+.d-flex {
+    display: flex;
+}
+.justify-right {
+    justify-content: right;
+}
+.align-center {
+    align-items: center;
+}
+.vertical-align {
+    vertical-align: middle;
+}
+* header i , footer i {
+    font-size: 20px;
+}
+
+
+/* vue */
+[v-cloak] {
+    display: none;
+  }
