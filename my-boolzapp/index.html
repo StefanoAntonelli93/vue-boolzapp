@@ -55,7 +55,7 @@
             <!-- chat -->
             <ul class="chats">
                 <li>
-                    <!-- creo chat dinamica con v-for -->
+                    <!-- creo chat dinamica con v-for itero e mostro avatar e nome dell'array contacts -->
                     <div class="avatar d-flex align-center" v-for="(element, index) in contacts" :class="{active: currentIndex === index}" @click="setAvatar(index)">
                         <img class="img-avatar" :src="element.avatar" alt="">
                         <div class="dati-avatar">
@@ -73,6 +73,7 @@
             <!--  header -->
             <header>
                 <div class="row">
+                    <!-- itero con v-for in contacts e mostro solo indice corrente avatar e nome -->
                     <div class="avatar d-flex align-center" v-for="(element, index) in contacts" 
                     v-show="currentIndex === index" >
                         <img class="img-avatar" :src="element.avatar" alt="">
@@ -87,13 +88,15 @@
                 </div>
             </header>
             <!--  conversation -->
-  
+            <!-- prendo elemento in contacts basato su indice corrente -->
             <ul class="conversation" v-for="(contact, index) in contacts" v-show="currentIndex === index">
+                <!-- mostro i messaggi inviati dell'indice corrente -->
                 <li class="my-message" v-for="message in contacts[currentIndex].messages" :key="message.date" v-show="message.status === 'sent'">
                     <i class="fa-solid fa-chevron-down"></i>
                     <p>{{ message.message }}</p>
                     <p class="hour">{{ message.date }}</p>
                 </li>
+                <!-- mostro i messaggi ricevuti dell'indice corrente -->
                 <li id="your-message" v-for="message in contacts[currentIndex].messages" :key="message.date" v-show="message.status === 'received'">
                     <i class="fa-solid fa-chevron-down"></i>
                     <p>{{ message.message }}</p>

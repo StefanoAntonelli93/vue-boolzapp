@@ -177,10 +177,7 @@ createApp({
         ],
         // definisco indice corrente di partenza
         currentIndex: 0,
-        // definisco nuovo array dove inserisco solo messaggi inviati
-        sentMessage: [],
-        // definisco nuovo array dove inserisco solo messaggi ricevuti
-        receivedMessage:[]
+
     };
   },
 
