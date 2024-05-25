@@ -325,14 +325,15 @@ createApp({
         };
  
     },
+    // creo metodo per eliminare messaggio selezionato
     deleteMessage(message) {
         console.log('ho cliccato messaggio');
         if (this.activeMessage === message) {
-            this.dropdownVisible = !this.dropdownVisible;
+            this.dropdownVisible = false;
           } else {
             this.dropdownVisible = true;
           }
-          this.activeMessage = message;
+        this.activeMessage = message;
     }
   },
 }).mount("#app");
