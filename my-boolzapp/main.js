@@ -175,16 +175,53 @@ createApp({
            
         }
         ],
-        // definisco indice corrente di partenza
+        // definisco indice di partenza
         currentIndex: 0,
+        // definisco variabile input con stringa vuota di partenza
+        inputText:'',
 
     };
   },
 
   methods: {
     setAvatar(index) {
-      console.log(index);
+      console.log('avatar in posizione:', index);
       this.currentIndex = index;
-    }
+    },
+    addNewMessage() {
+         // indice del contatto corrente
+         const currentIndex = this.currentIndex;
+         // creo un nuovo oggetto messaggio con la data attuale e il testo dall'input
+         const newMessage = {
+             date: new Date().toLocaleString(),
+             message: this.inputText,
+             status: 'sent'
+         };
+         // aggiungo il nuovo messaggio all'array messages del contatto corrente
+         this.contacts[currentIndex].messages.push(newMessage);
+         // resetto il campo di input
+         this.inputText = '';
+         
+    },
+    sendText() {
+        // al click del tasto enter lancio funzione sendText che aggiunge messaggio
+        this.addNewMessage();
+        setTimeout(() => {
+            this.autoMessage();
+        }, 1000);
+        
+  
+    },
+    // creo funzione che manda un messaggio automatico dopo 1 secondo
+    autoMessage() {
+        const currentIndex = this.currentIndex;
+        const autoMex ={
+            date: new Date().toLocaleString(),
+            message: 'ok',
+            status: 'received'
+        };
+        this.contacts[currentIndex].messages.push(autoMex);
+    },
+
   }
 }).mount('#app');

@@ -106,7 +106,9 @@
             <!--footer  -->
             <footer class="message">
                 <i class="fa-regular fa-face-smile"></i>
-                <input type="text" id="message" placeholder="Scrivi un messaggio">
+                <input type="text" id="message" placeholder="Scrivi un messaggio" v-model="inputText"  @keyup.enter="sendText()" >
+                
+                
                 <i class="fa-solid fa-microphone"></i>
             </footer>   
         </div>
