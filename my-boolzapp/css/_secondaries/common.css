@@ -214,3 +214,12 @@ ul li img {
 .active {
     background-color: lightgrey;
 }
+
+/* menu a tendina */
+.dropdown {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    padding: 1rem;
+  }

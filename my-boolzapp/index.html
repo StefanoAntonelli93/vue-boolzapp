@@ -49,14 +49,15 @@
             </div>
             <!-- search -->
             <div class="search">
-                <i class="fa-solid fa-magnifying-glass"></i><input type="text" id="message" placeholder="Cerca o inizia una nuova chat">
+                <i class="fa-solid fa-magnifying-glass" ></i>
+                <input type="text" id="message" placeholder="Cerca o inizia una nuova chat" v-model="searchText">
             </div>
 
             <!-- chat -->
             <ul class="chats">
                 <li>
                     <!-- creo chat dinamica con v-for itero e mostro avatar e nome dell'array contacts -->
-                    <div class="avatar d-flex align-center" v-for="(element, index) in contacts" :class="{active: currentIndex === index}" @click="setAvatar(index)">
+                    <div class="avatar d-flex align-center" v-for="(element, index) in listAvatar()" :class="{active: currentIndex === index}" @click="setAvatar(index)">
                         <img class="img-avatar" :src="element.avatar" alt="">
                         <div class="dati-avatar">
                             <h4 id="name-avatar" class="inline-block">{{ element.name }}</h4>
@@ -91,16 +92,26 @@
             <!-- prendo elemento in contacts basato su indice corrente -->
             <ul class="conversation" v-for="(contact, index) in contacts" v-show="currentIndex === index">
                 <!-- mostro i messaggi inviati dell'indice corrente -->
-                <li class="my-message" v-for="message in contacts[currentIndex].messages" :key="message.date" v-show="message.status === 'sent'">
+                <li class="my-message" v-for="message in contacts[currentIndex].messages" :key="message.date" v-show="message.status === 'sent'"
+                @click="deleteMessage(message)">
                     <i class="fa-solid fa-chevron-down"></i>
                     <p>{{ message.message }}</p>
                     <p class="hour">{{ message.date }}</p>
+                    <div class="dropdown"  v-if="dropdownVisible && activeMessage === message">
+                        <p>message info</p>
+                        <p>delete message</p>
+                    </div>
                 </li>
                 <!-- mostro i messaggi ricevuti dell'indice corrente -->
-                <li id="your-message" v-for="message in contacts[currentIndex].messages" :key="message.date" v-show="message.status === 'received'">
+                <li id="your-message" v-for="message in contacts[currentIndex].messages" :key="message.date" v-show="message.status === 'received'"
+                @click="deleteMessage(message)">
                     <i class="fa-solid fa-chevron-down"></i>
                     <p>{{ message.message }}</p>
                     <p class="hour">{{ message.date }}</p>
+                    <div class="dropdown"  v-if="dropdownVisible && activeMessage === message">
+                        <p>message info</p>
+                        <p>delete message</p>
+                    </div>
                 </li>
             </ul> 
             <!--footer  -->
