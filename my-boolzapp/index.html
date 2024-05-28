@@ -58,7 +58,7 @@
                 <li>
                     <!-- creo chat dinamica con v-for itero e mostro avatar e nome dell'array contacts -->
                     <div class="avatar d-flex align-center" v-for="(element, index) in listAvatar()" :class="{active: currentIndex === index}" @click="setAvatar(index)">
-                        <img class="img-avatar" :src="element.avatar" alt="">
+                        <img class="img-avatar" :src="element.avatar" :alt="element.name">
                         <div class="dati-avatar">
                             <h4 id="name-avatar" class="inline-block">{{ element.name }}</h4>
                             <p>ultimo messaggio</p>
@@ -79,7 +79,7 @@
                     <!-- itero con v-for in contacts e mostro solo indice corrente avatar e nome -->
                     <div class="avatar d-flex align-center" v-for="(element, index) in contacts" 
                     v-show="currentIndex === index" >
-                        <img class="img-avatar" :src="element.avatar" alt="">
+                        <img class="img-avatar" :src="element.avatar" :alt="element.name">
                         <h4 id="name-avatar" class="inline-block">{{ element.name }}</h4>
                     </div>
       

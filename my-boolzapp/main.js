@@ -264,7 +264,7 @@ createApp({
       // definisco indice di partenza
       currentIndex: 0,
       // definisco input con stringa vuota di partenza
-      inputText: "",
+      inputText: null,
     //   definisco searchText vuoto
       searchText: "",
       dropdownVisible: false,
