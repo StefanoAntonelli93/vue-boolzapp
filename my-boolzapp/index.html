@@ -61,6 +61,8 @@
                         <img class="img-avatar" :src="element.avatar" alt="">
                         <div class="dati-avatar">
                             <h4 id="name-avatar" class="inline-block">{{ element.name }}</h4>
+                            <p>ultimo messaggio</p>
+                            <p>ora messaggio</p>
                      
                         </div>
                     </div>
@@ -108,6 +110,7 @@
                     <i class="fa-solid fa-chevron-down"></i>
                     <p>{{ message.message }}</p>
                     <p class="hour">{{ message.date }}</p>
+                    <!-- SE MESSAGGIO SELEZIONATO = MESSAGGIO ATTIVO E DROPDOWN VISIBILE ALLO0RA MOSTRA DROPDOWN SU MESSAGGIO ATTIVO -->
                     <div class="dropdown"  v-if="dropdownVisible && activeMessage === message">
                         <p>message info</p>
                         <p>delete message</p>
@@ -129,7 +132,7 @@
 <!-- vue js -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <!-- main js -->
-<script type="text/javascript" src="/my-boolzapp/main.js" ></script>
+<script type="text/javascript" src="./main.js" ></script>
 </body>
 </html>
             

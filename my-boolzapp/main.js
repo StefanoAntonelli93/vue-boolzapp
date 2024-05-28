@@ -317,6 +317,7 @@ createApp({
         const searchTextLower = this.searchText.toLowerCase();
         console.log('stai cercando:',this.searchText);
             return this.contacts.filter((element) =>{
+                // METODO INCLUDES
                 return element.name.toLowerCase().includes(searchTextLower);
             });
             // altrimenti ritorna array contacts intero
